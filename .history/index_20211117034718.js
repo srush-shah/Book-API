@@ -1,6 +1,5 @@
 //Data Requirements
 
-//We are a company that handles book publications
 
 //Book(object) -> Features -> ISBN(id), Title, Author, Language, Pub Date, Pages, Category[]
 //Author(object) -> Features -> Name, Id, Books[]
