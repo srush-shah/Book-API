@@ -1,0 +1,39 @@
+//Framework
+const express = require("express");
+
+//Database
+const database = require("./database/index");
+
+//Initializing express
+const bookapi = express();
+
+//Configurations
+bookapi.use(express.json());
+
+/*
+Route           /
+Description     get all books
+Access          PUBLIC
+Parameters      NONE
+Mr
+*/
+
+bookapi.get("/", (req, res) => {
+  return res.json({ books: database.books });
+});
+
+bookapi.get("/:isbn", (req, res) => {
+  const getSpecificBook = database.books.filter(
+    (book) => book.ISBN === req.params.isbn
+  );
+
+  if (getSpecificBook.length === 0) {
+    return res.json({
+      error: `No book found for the ISBN of ${req.params.isbn}`,
+    });
+  }
+
+  return res.json({ book: getSpecificBook });
+});
+
+bookapi.listen(3000, () => console.log("Server running!"));
