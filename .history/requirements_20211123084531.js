@@ -29,7 +29,7 @@ Update/Add author for a book
 
 DELETE
 delete a book
-delete an author for a book
+delete an author for a
 */
 
 //Authors
@@ -40,15 +40,6 @@ GET
 to get all authors ✅
 to get a specific author [Task] ✅
 to get a list of authors based on books ✅
-
-POST
-New author
-
-PUT
-Update author details
-
-DELETE
-delete an author
 */
 
 //Publication
@@ -59,15 +50,4 @@ GET
 to get all publications ✅
 to get a specific publication [Task] ✅
 to get a list of publications  based on books [Task] ✅
-
-POST
-New publication
-
-PUT
-Update publication details
-Update/Add book for a publication
-
-DELETE
-delete a book from publication
-delete a publication
 */

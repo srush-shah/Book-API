@@ -68,6 +68,6 @@ Update publication details
 Update/Add book for a publication
 
 DELETE
-delete a book from publication
-delete a publication
+delete a 
+delete an author for a book
 */

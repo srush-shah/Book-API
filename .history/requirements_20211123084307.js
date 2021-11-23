@@ -19,17 +19,6 @@ to get all books ✅
 to get specific books ✅
 to get a list of books based on category ✅
 to get a list of books based on author [Task] ✅
-
-POST
-New book
-
-PUT
-Update book details
-Update/Add author for a book
-
-DELETE
-delete a book
-delete an author for a book
 */
 
 //Authors
@@ -40,34 +29,12 @@ GET
 to get all authors ✅
 to get a specific author [Task] ✅
 to get a list of authors based on books ✅
-
-POST
-New author
-
-PUT
-Update author details
-
-DELETE
-delete an author
 */
 
 //Publication
 /*
 We need an API
-
-GET
 to get all publications ✅
 to get a specific publication [Task] ✅
 to get a list of publications  based on books [Task] ✅
-
-POST
-New publication
-
-PUT
-Update publication details
-Update/Add book for a publication
-
-DELETE
-delete a book from publication
-delete a publication
 */

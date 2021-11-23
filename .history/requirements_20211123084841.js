@@ -65,9 +65,9 @@ New publication
 
 PUT
 Update publication details
-Update/Add book for a publication
+Update/Add  for a book
 
 DELETE
-delete a book from publication
-delete a publication
+delete a book
+delete an author for a book
 */

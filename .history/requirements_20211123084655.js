@@ -48,7 +48,8 @@ PUT
 Update author details
 
 DELETE
-delete an author
+delete an book
+delete an author for a book
 */
 
 //Publication
@@ -59,15 +60,4 @@ GET
 to get all publications ✅
 to get a specific publication [Task] ✅
 to get a list of publications  based on books [Task] ✅
-
-POST
-New publication
-
-PUT
-Update publication details
-Update/Add book for a publication
-
-DELETE
-delete a book from publication
-delete a publication
 */

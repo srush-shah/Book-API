@@ -64,10 +64,10 @@ POST
 New publication
 
 PUT
-Update publication details
-Update/Add book for a publication
+Update book details
+Update/Add author for a book
 
 DELETE
-delete a book from publication
-delete a publication
+delete a book
+delete an author for a book
 */
