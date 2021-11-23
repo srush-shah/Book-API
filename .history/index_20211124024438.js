@@ -254,8 +254,8 @@ bookapi.post("/publication/new", (req, res) => {
   const { newPublication } = req.body;
   database.publications.push(newPublication);
   return res.json({
-    publications: database.publications,
-    message: "The publication was added",
+    authors: database.pub,
+    message: "The author was added",
   });
 });
 

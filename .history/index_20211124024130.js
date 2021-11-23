@@ -241,22 +241,4 @@ bookapi.post("/author/new", (req, res) => {
   });
 });
 
-/*
-Route           /publication/new
-Description     add new publication
-Access          PUBLIC
-Parameters      NONE
-Method          POST
-*/
-
-bookapi.post("/publication/new", (req, res) => {
-  //We will use request body here instead of request parameter
-  const { newPublication } = req.body;
-  database.publications.push(newPublication);
-  return res.json({
-    publications: database.publications,
-    message: "The publication was added",
-  });
-});
-
 bookapi.listen(3000, () => console.log("Server running!"));

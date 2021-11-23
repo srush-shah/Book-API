@@ -61,7 +61,7 @@ to get a specific publication [Task] ✅
 to get a list of publications  based on books [Task] ✅
 
 POST
-New publication [TASK] (using postman, database to be worked upon later) ✅
+New publication [TASK] using postman, database to be worked upon later)
 
 PUT
 Update publication details

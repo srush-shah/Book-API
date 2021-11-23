@@ -218,45 +218,7 @@ Method          POST
 
 bookapi.post("/book/new", (req, res) => {
   //We will use request body here instead of request parameter
-  const { newBook } = req.body;
-  database.books.push(newBook);
-  return res.json({ books: database.books, message: "The book was added" });
-});
-
-/*
-Route           /author/new
-Description     add new author
-Access          PUBLIC
-Parameters      NONE
-Method          POST
-*/
-
-bookapi.post("/author/new", (req, res) => {
-  //We will use request body here instead of request parameter
-  const { newAuthor } = req.body;
-  database.authors.push(newAuthor);
-  return res.json({
-    authors: database.authors,
-    message: "The author was added",
-  });
-});
-
-/*
-Route           /publication/new
-Description     add new publication
-Access          PUBLIC
-Parameters      NONE
-Method          POST
-*/
-
-bookapi.post("/publication/new", (req, res) => {
-  //We will use request body here instead of request parameter
-  const { newPublication } = req.body;
-  database.publications.push(newPublication);
-  return res.json({
-    publications: database.publications,
-    message: "The publication was added",
-  });
+  const newBook = req.
 });
 
 bookapi.listen(3000, () => console.log("Server running!"));

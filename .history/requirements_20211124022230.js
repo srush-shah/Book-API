@@ -42,7 +42,7 @@ to get a specific author [Task] ✅
 to get a list of authors based on books ✅
 
 POST
-New author (using postman, database to be worked upon later,book to be added using PUT)✅
+New author
 
 PUT
 Update author details
@@ -61,7 +61,7 @@ to get a specific publication [Task] ✅
 to get a list of publications  based on books [Task] ✅
 
 POST
-New publication [TASK] (using postman, database to be worked upon later) ✅
+New publication
 
 PUT
 Update publication details
