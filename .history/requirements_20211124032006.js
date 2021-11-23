@@ -25,7 +25,7 @@ New book (using postman, database to be worked upon later) ✅
 
 PUT
 Update book details (title) (using forEach) ✅
-Update/Add author for a book ✅
+Update/Add author for a book
 
 DELETE
 delete a book
@@ -45,7 +45,7 @@ POST
 New author (using postman, database to be worked upon later,book to be added using PUT)✅
 
 PUT
-Update author details [Task]
+Update author details
 
 DELETE
 delete an author
@@ -64,7 +64,7 @@ POST
 New publication [TASK] (using postman, database to be worked upon later) ✅
 
 PUT
-Update publication details [Task]
+Update publication details
 Update/Add book for a publication
 
 DELETE

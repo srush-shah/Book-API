@@ -64,7 +64,7 @@ POST
 New publication [TASK] (using postman, database to be worked upon later) ✅
 
 PUT
-Update publication details [Task]
+Update publication details
 Update/Add book for a publication
 
 DELETE

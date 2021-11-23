@@ -275,36 +275,7 @@ bookapi.put("/book/update/:isbn", (req, res) => {
     }
   });
 
-  return res.json({ books: database.books });
-});
-
-/*
-Route           /book/author/update
-Description     update/add  author for the book
-Access          PUBLIC
-Parameters      isbn
-Method          PUT
-*/
-
-bookapi.put("/book/author/update/:isbn", (req, res) => {
-  //update the book database
-  database.books.forEach((book) => {
-    if (book.ISBN === req.params.isbn) {
-      return book.authorid.push(req.body.authorid);
-    }
-  });
-  //update the author database
-  database.authors.forEach((author) => {
-    if (author.id === req.body.authorid) {
-      return author.books.push(req.params.isbn);
-    }
-  });
-
-  return res.json({
-    books: database.books,
-    authors: database.authors,
-    message: "Author updated for the book",
-  });
+  return res.json({books: })
 });
 
 bookapi.listen(3000, () => console.log("Server running!"));

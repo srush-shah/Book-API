@@ -302,7 +302,7 @@ bookapi.put("/book/author/update/:isbn", (req, res) => {
 
   return res.json({
     books: database.books,
-    authors: database.authors,
+    authrs: database.authors,
     message: "Author updated for the book",
   });
 });

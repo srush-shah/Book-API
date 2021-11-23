@@ -295,14 +295,14 @@ bookapi.put("/book/author/update/:isbn", (req, res) => {
   });
   //update the author database
   database.authors.forEach((author) => {
-    if (author.id === req.body.authorid) {
+    if (author.id === req.body.newAuthor.authorid) {
       return author.books.push(req.params.isbn);
     }
   });
 
   return res.json({
     books: database.books,
-    authors: database.authors,
+    authrs: database.authors,
     message: "Author updated for the book",
   });
 });

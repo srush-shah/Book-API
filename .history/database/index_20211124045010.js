@@ -24,9 +24,9 @@ const authors = [
   },
   {
     id: 3,
-    name: "Sakshi",
-    books: [],
-  },
+    name: "Srushti",
+    books: ["12345ONE"],
+  }
 ];
 
 const publications = [

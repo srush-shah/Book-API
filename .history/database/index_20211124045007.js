@@ -23,10 +23,10 @@ const authors = [
     books: ["12345ONE"],
   },
   {
-    id: 3,
-    name: "Sakshi",
-    books: [],
-  },
+    id: 1,
+    name: "Srushti",
+    books: ["12345ONE"],
+  }
 ];
 
 const publications = [
