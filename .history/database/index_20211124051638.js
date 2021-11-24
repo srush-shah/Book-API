@@ -9,16 +9,6 @@ const books = [
     category: ["fiction", "programming", "tech", "web dev"],
     publication: 1,
   },
-  {
-    ISBN: "12345TWO",
-    title: "Getting started with HTML",
-    authorid: [1, 3],
-    language: "en",
-    pubDate: "2021-07-07",
-    numOfPage: 2000,
-    category: ["fiction", "programming", "tech", "web dev"],
-    publication: 1,
-  },
 ];
 
 const authors = [
@@ -46,10 +36,10 @@ const publications = [
     books: ["12345ONE"],
   },
   {
-    id: 2,
-    name: "React",
-    books: [],
-  },
+    id: 1,
+    name: "Chakra",
+    books: ["12345ONE"],
+  }
 ];
 
 module.exports = { books, authors, publications };

@@ -356,21 +356,21 @@ Method          PUT
 bookapi.put("/publication/book/update/:pubid", (req, res) => {
   //update the publication database
   database.publications.forEach((pub) => {
-    if (pub.id === parseInt(req.params.pubid)) {
+    if (pub.id === req.params.pubid) {
       return pub.books.push(req.body.isbn);
     }
   });
   //update the book database
   database.books.forEach((book) => {
     if (book.ISBN === req.body.isbn) {
-      return (book.publication = parseInt(req.params.pubid));
+      book.publication = req.params.pubid;
     }
   });
 
   return res.json({
     books: database.books,
-    publications: database.publications,
-    message: "Book updated for the publication",
+    authors: database.authors,
+    message: "Author updated for the book",
   });
 });
 

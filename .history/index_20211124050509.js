@@ -309,69 +309,21 @@ bookapi.put("/book/author/update/:isbn", (req, res) => {
 
 /*
 Route           /author/update
-Description     update author name
+Description     update book title
 Access          PUBLIC
-Parameters      name
+Parameters      authorid
 Method          PUT
 */
 
-bookapi.put("/author/update/:name", (req, res) => {
+bookapi.put("/author/update/:authorid", (req, res) => {
   //froEach directly modifies the array so we will use it for now
   database.authors.forEach((author) => {
-    if (author.name === req.params.name) {
-      author.name = req.body.name;
+    if (author.id === req.params.authorid) {
+       = req.body.name;
     }
   });
 
   return res.json({ authors: database.authors });
-});
-
-/*
-Route           /publication/update
-Description     update publication name
-Access          PUBLIC
-Parameters      name
-Method          PUT
-*/
-
-bookapi.put("/publication/update/:name", (req, res) => {
-  //froEach directly modifies the array so we will use it for now
-  database.publications.forEach((pub) => {
-    if (pub.name === req.params.name) {
-      pub.name = req.body.name;
-    }
-  });
-
-  return res.json({ publications: database.publications });
-});
-
-/*
-Route           /publication/book/update
-Description     update/add book for a publication
-Access          PUBLIC
-Parameters      pubid
-Method          PUT
-*/
-
-bookapi.put("/publication/book/update/:pubid", (req, res) => {
-  //update the publication database
-  database.publications.forEach((pub) => {
-    if (pub.id === parseInt(req.params.pubid)) {
-      return pub.books.push(req.body.isbn);
-    }
-  });
-  //update the book database
-  database.books.forEach((book) => {
-    if (book.ISBN === req.body.isbn) {
-      return (book.publication = parseInt(req.params.pubid));
-    }
-  });
-
-  return res.json({
-    books: database.books,
-    publications: database.publications,
-    message: "Book updated for the publication",
-  });
 });
 
 bookapi.listen(3000, () => console.log("Server running!"));

@@ -17,7 +17,7 @@ const books = [
     pubDate: "2021-07-07",
     numOfPage: 2000,
     category: ["fiction", "programming", "tech", "web dev"],
-    publication: 1,
+    publication: 2
   },
 ];
 

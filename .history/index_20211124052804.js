@@ -356,7 +356,7 @@ Method          PUT
 bookapi.put("/publication/book/update/:pubid", (req, res) => {
   //update the publication database
   database.publications.forEach((pub) => {
-    if (pub.id === parseInt(req.params.pubid)) {
+    if (pub.id === parseInt(req.params.pubid) {
       return pub.books.push(req.body.isbn);
     }
   });

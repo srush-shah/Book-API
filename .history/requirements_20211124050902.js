@@ -45,7 +45,7 @@ POST
 New author (using postman, database to be worked upon later,book to be added using PUT)✅
 
 PUT
-Update author details [Task] ✅
+Update author details [Task] 
 
 DELETE
 delete an author
@@ -64,8 +64,8 @@ POST
 New publication [TASK] (using postman, database to be worked upon later) ✅
 
 PUT
-Update publication details [Task] ✅
-Update/Add book for a publication ✅
+Update publication details [Task]
+Update/Add book for a publication
 
 DELETE
 delete a book from publication

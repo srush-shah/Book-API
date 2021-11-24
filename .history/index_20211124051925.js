@@ -349,28 +349,28 @@ bookapi.put("/publication/update/:name", (req, res) => {
 Route           /publication/book/update
 Description     update/add book for a publication
 Access          PUBLIC
-Parameters      pubid
+Parameters      name
 Method          PUT
 */
 
-bookapi.put("/publication/book/update/:pubid", (req, res) => {
+bookapi.put("/publication/book/update/:name", (req, res) => {
   //update the publication database
   database.publications.forEach((pub) => {
-    if (pub.id === parseInt(req.params.pubid)) {
+    if (pub.name === req.params.name) {
       return pub.books.push(req.body.isbn);
     }
   });
   //update the book database
   database.books.forEach((book) => {
     if (book.ISBN === req.body.isbn) {
-      return (book.publication = parseInt(req.params.pubid));
+      book.publication;
     }
   });
 
   return res.json({
     books: database.books,
-    publications: database.publications,
-    message: "Book updated for the publication",
+    authors: database.authors,
+    message: "Author updated for the book",
   });
 });
 

@@ -15,7 +15,7 @@ const books = [
     authorid: [1, 3],
     language: "en",
     pubDate: "2021-07-07",
-    numOfPage: 2000,
+    numOfPage: 225,
     category: ["fiction", "programming", "tech", "web dev"],
     publication: 1,
   },
