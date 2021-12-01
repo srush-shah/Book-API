@@ -275,10 +275,7 @@ bookapi.put("/book/update/:isbn", (req, res) => {
     }
   });
 
-  return res.json({
-    books: database.books,
-    message: "The title of the book has been updated",
-  });
+  return res.json({ books: database.books, message: "The title of the book has been updated" });
 });
 
 /*
@@ -326,10 +323,7 @@ bookapi.put("/author/update/:name", (req, res) => {
     }
   });
 
-  return res.json({
-    authors: database.authors,
-    message: "Author updated for the book",
-  });
+  return res.json({ authors: database.authors, message:  });
 });
 
 /*
@@ -348,10 +342,7 @@ bookapi.put("/publication/update/:name", (req, res) => {
     }
   });
 
-  return res.json({
-    publications: database.publications,
-    message: "Updated name of the publication",
-  });
+  return res.json({ publications: database.publications });
 });
 
 /*
@@ -365,7 +356,7 @@ Method          PUT
 bookapi.put("/publication/book/update/:pubid", (req, res) => {
   //update the publication database
   database.publications.forEach((pub) => {
-    if (pub.id === parseInt(req.params.pubid)) {
+    if (pub.id === parseInt(req.params.pubid) ) {
       return pub.books.push(req.body.isbn);
     }
   });
