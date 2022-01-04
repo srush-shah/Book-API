@@ -1,2 +1,0 @@
-//Requirements
-//Book -> ISBN(id), 
