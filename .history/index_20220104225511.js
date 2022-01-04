@@ -16,6 +16,7 @@ mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindand
   })
   .then(() => console.log("Connection Established"));
 

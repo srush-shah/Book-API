@@ -14,8 +14,7 @@ const bookapi = express();
 //Establish Database Connection
 mongoose
   .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useNew
   })
   .then(() => console.log("Connection Established"));
 

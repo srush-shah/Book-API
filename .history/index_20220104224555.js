@@ -1,5 +1,3 @@
-//Security Configuration
-require("dotenv").config();
 
 //Framework
 const express = require("express");
@@ -13,10 +11,9 @@ const bookapi = express();
 
 //Establish Database Connection
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://srushtishah:sutu10102k@bookapi.xhpjk.mongodb.net/Booky?retryWrites=true&w=majority"
+  )
   .then(() => console.log("Connection Established"));
 
 //Configurations

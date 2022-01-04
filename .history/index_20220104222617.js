@@ -1,9 +1,6 @@
-//Security Configuration
-require("dotenv").config();
-
 //Framework
 const express = require("express");
-const mongoose = require("mongoose");
+const mongoose = require("mongoose ");
 
 //Database
 const database = require("./database/index");
@@ -12,12 +9,11 @@ const database = require("./database/index");
 const bookapi = express();
 
 //Establish Database Connection
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Connection Established"));
+mongoose.connect(
+  "mongodb+srv://srushtishah:<password>@shapeai.xhpjk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+    useNewUser
+  }
+);
 
 //Configurations
 bookapi.use(express.json());
