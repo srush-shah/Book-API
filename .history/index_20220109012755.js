@@ -534,4 +534,4 @@ Mongoose helps you with validation, relationship with other data */
 
 //Mongoose model is document model of MongoDB
 //Booky - Database - Collection
-//books,authors,publications - Objects - Document
+//books,authors,publications - Objects -  

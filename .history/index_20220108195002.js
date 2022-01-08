@@ -530,8 +530,4 @@ bookapi.listen(3000, () => console.log("Server running!"));
 
 MongoDB is Schemaless
 
-Mongoose helps you with validation, relationship with other data */
-
-//Mongoose model is document model of MongoDB
-//Booky - Database - Collection
-//books,authors,publications - Objects - Document
+Mongoose helps you with validation, relationship with other 
