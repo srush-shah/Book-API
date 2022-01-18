@@ -11,7 +11,7 @@ const database = require("./database/index");
 //Models
 const BookModels = require("./database/book");
 const AuthorModels = require("./database/author");
-const PublicationModels = require("./database/publication");
+const PublicationModels = require("./")
 
 //Initializing express
 const bookapi = express();
