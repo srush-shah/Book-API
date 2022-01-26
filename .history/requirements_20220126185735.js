@@ -38,8 +38,8 @@ We need an API
 
 GET
 to get all authors ✅ 💯
-to get a specific author [Task] ✅ 💯
-to get a list of authors based on books ✅ 💯
+to get a specific author [Task] ✅ 🤞
+to get a list of authors based on books ✅ 🤞
 
 POST
 New author (using postman, database to be worked upon later,book to be added using PUT)✅ 💯

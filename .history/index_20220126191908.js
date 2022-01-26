@@ -182,13 +182,13 @@ bookapi.get("/authors/isbn/:isbn", async (req, res) => {
     author.books.includes(req.params.isbn)
   );*/
 
-  if (!getSpecificAuthors) {
+  if (getSpecificAuthors.length === 0) {
     return res.json({
       error: `No author found for the book ${req.params.isbn}`,
     });
   }
 
-  return res.json(getSpecificAuthors);
+  return res.json({ authors: getSpecificAuthors });
 });
 
 /*

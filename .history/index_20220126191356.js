@@ -150,21 +150,18 @@ Parameters      author
 Method          GET
 */
 
-bookapi.get("/authors/author/:author", async (req, res) => {
-  const getSpecificAuthor = await AuthorModel.findOne({
-    name: req.params.author,
-  });
-
+bookapi.get("/authors/author/:author", (req, res) => {
+  
   /*const getSpecificAuthor = database.authors.filter(
     (author) => author.name === req.params.author
   );*/
 
-  if (!getSpecificAuthor) {
+  if (getSpecificAuthor.length === 0) {
     return res.json({
       error: `No author found with the name ${req.params.author}`,
     });
   }
-  return res.json(getSpecificAuthor);
+  return res.json({ author: getSpecificAuthor });
 });
 
 /*
@@ -175,20 +172,18 @@ Parameters      isbn
 Method          GET
 */
 
-bookapi.get("/authors/isbn/:isbn", async (req, res) => {
-  const getSpecificAuthors = AuthorModel.find({ books: req.params.isbn });
-
-  /*const getSpecificAuthors = database.authors.filter((author) =>
+bookapi.get("/authors/isbn/:isbn", (req, res) => {
+  const getSpecificAuthors = database.authors.filter((author) =>
     author.books.includes(req.params.isbn)
-  );*/
+  );
 
-  if (!getSpecificAuthors) {
+  if (getSpecificAuthors.length === 0) {
     return res.json({
       error: `No author found for the book ${req.params.isbn}`,
     });
   }
 
-  return res.json(getSpecificAuthors);
+  return res.json({ authors: getSpecificAuthors });
 });
 
 /*

@@ -188,7 +188,7 @@ bookapi.get("/authors/isbn/:isbn", async (req, res) => {
     });
   }
 
-  return res.json(getSpecificAuthors);
+  return res.json({ authors: getSpecificAuthors });
 });
 
 /*

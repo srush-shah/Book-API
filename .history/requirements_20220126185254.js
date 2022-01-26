@@ -18,7 +18,7 @@ GET
 to get all books ✅  💯
 to get specific books ✅ 💯
 to get a list of books based on category ✅ 💯
-to get a list of books based on author [Task] ✅ 💯
+to get a list of books based on author [Task] ✅ 
 
 POST
 New book (using postman, database to be worked upon later) ✅ 💯
@@ -38,8 +38,8 @@ We need an API
 
 GET
 to get all authors ✅ 💯
-to get a specific author [Task] ✅ 💯
-to get a list of authors based on books ✅ 💯
+to get a specific author [Task] ✅
+to get a list of authors based on books ✅ 
 
 POST
 New author (using postman, database to be worked upon later,book to be added using PUT)✅ 💯

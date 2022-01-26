@@ -12,7 +12,6 @@ const database = require("./database/index");
 const BookModel = require("./database/book");
 const AuthorModel = require("./database/author");
 const PublicationModel = require("./database/publication");
-const { get } = require("express/lib/request");
 
 //Initializing express
 const bookapi = express();
@@ -73,7 +72,7 @@ Method          GET
 */
 
 bookapi.get("/category/:category", async (req, res) => {
-  const getSpecificBooks = await BookModel.find({
+  const getSpecificBooks = await BookModel.findOne({
     category: req.params.category,
   });
 
@@ -81,13 +80,13 @@ bookapi.get("/category/:category", async (req, res) => {
     book.category.includes(req.params.category)
   );*/
 
-  if (!getSpecificBooks) {
+  if (getSpecificBooks.length === 0) {
     return res.json({
       error: `No book found for the category of ${req.params.category}`,
     });
   }
 
-  return res.json(getSpecificBooks);
+  return res.json({ book: getSpecificBooks });
 });
 
 /*
@@ -98,35 +97,28 @@ Parameters      author
 Method          GET
 */
 
-bookapi.get("/books/:author", async (req, res) => {
-  const getSpecificAuthor = await AuthorModel.findOne({
-    name: req.params.author,
-  });
-  /*const getSpecificAuthor = database.authors.filter(
+bookapi.get("/books/:author", (req, res) => {
+  const getSpecificAuthor = database.authors.filter(
     (author) => author.name === req.params.author
-  );*/
+  );
 
-  if (!getSpecificAuthor) {
+  if (getSpecificAuthor.length === 0) {
     return res.json({
       error: `No author found with the name ${req.params.author}`,
     });
   }
 
-  const getSpecificBooks = await BookModel.find({
-    authorid: getSpecificAuthor.id,
-  });
-
-  /*const getSpecificBooks = database.books.filter((book) =>
+  const getSpecificBooks = database.books.filter((book) =>
     book.authorid.includes(getSpecificAuthor[0].id)
-  );*/
+  );
 
-  if (!getSpecificBooks) {
+  if (getSpecificBooks.length === 0) {
     return res.json({
       error: `No book found for the author ${req.params.author}`,
     });
   }
 
-  return res.json(getSpecificBooks);
+  return res.json({ book: getSpecificBooks });
 });
 
 /*
@@ -138,7 +130,7 @@ Method          GET
 */
 
 bookapi.get("/authors", async (req, res) => {
-  const getAllAuthors = await AuthorModel.find();
+  const getAllAuthors = AuthorModel.find();
   return res.json(getAllAuthors);
 });
 
@@ -150,21 +142,17 @@ Parameters      author
 Method          GET
 */
 
-bookapi.get("/authors/author/:author", async (req, res) => {
-  const getSpecificAuthor = await AuthorModel.findOne({
-    name: req.params.author,
-  });
-
-  /*const getSpecificAuthor = database.authors.filter(
+bookapi.get("/authors/author/:author", (req, res) => {
+  const getSpecificAuthor = database.authors.filter(
     (author) => author.name === req.params.author
-  );*/
+  );
 
-  if (!getSpecificAuthor) {
+  if (getSpecificAuthor.length === 0) {
     return res.json({
       error: `No author found with the name ${req.params.author}`,
     });
   }
-  return res.json(getSpecificAuthor);
+  return res.json({ author: getSpecificAuthor });
 });
 
 /*
@@ -175,20 +163,18 @@ Parameters      isbn
 Method          GET
 */
 
-bookapi.get("/authors/isbn/:isbn", async (req, res) => {
-  const getSpecificAuthors = AuthorModel.find({ books: req.params.isbn });
-
-  /*const getSpecificAuthors = database.authors.filter((author) =>
+bookapi.get("/authors/isbn/:isbn", (req, res) => {
+  const getSpecificAuthors = database.authors.filter((author) =>
     author.books.includes(req.params.isbn)
-  );*/
+  );
 
-  if (!getSpecificAuthors) {
+  if (getSpecificAuthors.length === 0) {
     return res.json({
       error: `No author found for the book ${req.params.isbn}`,
     });
   }
 
-  return res.json(getSpecificAuthors);
+  return res.json({ authors: getSpecificAuthors });
 });
 
 /*
@@ -257,7 +243,7 @@ Method          POST
 bookapi.post("/book/new", async (req, res) => {
   //We will use request body here instead of request parameter
   const { newBook } = req.body;
-  await BookModel.create(newBook);
+  BookModel.create(newBook);
   //database.books.push(newBook);
   return res.json({ message: "The book was added" });
 });
@@ -270,10 +256,10 @@ Parameters      NONE
 Method          POST
 */
 
-bookapi.post("/author/new", async (req, res) => {
+bookapi.post("/author/new", (req, res) => {
   //We will use request body here instead of request parameter
   const { newAuthor } = req.body;
-  await AuthorModel.create(newAuthor);
+  AuthorModel.create(newAuthor);
   return res.json({ message: "The author was added" });
 });
 
