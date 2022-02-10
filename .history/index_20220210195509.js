@@ -14,7 +14,6 @@ const AuthorModel = require("./database/author");
 const PublicationModel = require("./database/publication");
 const { get } = require("express/lib/request");
 const { update } = require("./database/book");
-const { resetWatchers } = require("nodemon/lib/monitor/watch");
 
 //Initializing express
 const bookapi = express();
@@ -388,20 +387,16 @@ Method          PUT
 */
 
 bookapi.put("/author/update/:name", async (req, res) => {
-  const updatedAuthor = await AuthorModel.findOneAndUpdate(
-    { name: req.params.name },
-    { name: req.body.name },
-    { new: true }
-  );
   //forEach directly modifies the array so we will use it for now
   /*database.authors.forEach((author) => {
     if (author.name === req.params.name) {
       author.name = req.body.name;
     }
-  });*/
+  });
 
   return res.json({
-    authors: updatedAuthor,
+    authors: database.authors,
+    message: "Author updated for the book",
   });
 });
 

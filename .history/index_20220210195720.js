@@ -388,11 +388,11 @@ Method          PUT
 */
 
 bookapi.put("/author/update/:name", async (req, res) => {
+
   const updatedAuthor = await AuthorModel.findOneAndUpdate(
-    { name: req.params.name },
-    { name: req.body.name },
-    { new: true }
-  );
+    {name: req.params.name},
+    {name: req.body.name}
+  )
   //forEach directly modifies the array so we will use it for now
   /*database.authors.forEach((author) => {
     if (author.name === req.params.name) {
@@ -401,7 +401,8 @@ bookapi.put("/author/update/:name", async (req, res) => {
   });*/
 
   return res.json({
-    authors: updatedAuthor,
+    authors: database.authors,
+    message: "Author updated for the book",
   });
 });
 

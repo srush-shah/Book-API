@@ -401,7 +401,7 @@ bookapi.put("/author/update/:name", async (req, res) => {
   });*/
 
   return res.json({
-    authors: updatedAuthor,
+    authors: database.authors,
   });
 });
 
