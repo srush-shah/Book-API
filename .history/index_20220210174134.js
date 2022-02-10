@@ -307,9 +307,9 @@ bookapi.put("/book/update/:isbn", async (req, res) => {
   const updatedBook = await BookModel.findOneAndUpdate(
     {
       ISBN: req.params.isbn,
-    }, //how to find
-    { title: req.body.title }, //what to update
-    { new: true } //return updated data
+    }, //
+    { title: req.body.title },
+    { new: true }
   );
   //froEach directly modifies the array so we will use it for now
   /*database.books.forEach((book) => {
@@ -319,7 +319,8 @@ bookapi.put("/book/update/:isbn", async (req, res) => {
   });*/
 
   return res.json({
-    books: updatedBook,
+    books: database.books,
+    message: "The title of the book has been updated",
   });
 });
 

@@ -24,7 +24,7 @@ POST
 New book (using postman, database to be worked upon later) ✅ 💯
 
 PUT
-Update book details (title) (using forEach) ✅ 💯
+Update book details (title) (using forEach) ✅
 Update/Add author for a book ✅
 
 DELETE

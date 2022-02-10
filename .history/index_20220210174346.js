@@ -320,7 +320,7 @@ bookapi.put("/book/update/:isbn", async (req, res) => {
 
   return res.json({
     books: updatedBook,
-  });
+  } );
 });
 
 /*

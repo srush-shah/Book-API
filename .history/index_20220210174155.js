@@ -319,7 +319,8 @@ bookapi.put("/book/update/:isbn", async (req, res) => {
   });*/
 
   return res.json({
-    books: updatedBook,
+    books: database.books,
+    message: "The title of the book has been updated",
   });
 });
 
