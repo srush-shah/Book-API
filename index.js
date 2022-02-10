@@ -13,6 +13,7 @@ const BookModel = require("./database/book");
 const AuthorModel = require("./database/author");
 const PublicationModel = require("./database/publication");
 const { get } = require("express/lib/request");
+const { update } = require("./database/book");
 
 //Initializing express
 const bookapi = express();
@@ -309,7 +310,7 @@ bookapi.put("/book/update/:isbn", async (req, res) => {
       ISBN: req.params.isbn,
     }, //how to find
     { title: req.body.title }, //what to update
-    { new: true } //return updated data
+    { new: true } //return updated data. If not included, then returns old data but updates the database.
   );
   //froEach directly modifies the array so we will use it for now
   /*database.books.forEach((book) => {
@@ -331,24 +332,49 @@ Parameters      isbn
 Method          PUT
 */
 
-bookapi.put("/book/author/update/:isbn", (req, res) => {
+bookapi.put("/book/author/update/:isbn", async (req, res) => {
   //update the book database
-  database.books.forEach((book) => {
+
+  const updatedBook = await BookModel.findOneAndUpdate(
+    {
+      ISBN: req.params.isbn,
+    },
+    {
+      $addToSet: {
+        authorid: Number(req.body.authorid),
+      },
+    },
+    {
+      new: true,
+    }
+  );
+  /*database.books.forEach((book) => {
     if (book.ISBN === req.params.isbn) {
       return book.authorid.push(req.body.authorid);
     }
-  });
+  });*/
+
   //update the author database
-  database.authors.forEach((author) => {
+
+  const updatedAuthor = await AuthorModel.findOneAndUpdate(
+    { id: Number(req.body.authorid) },
+    {
+      $addToSet: {
+        books: req.params.isbn,
+      },
+    },
+    { new: true }
+  );
+
+  /*database.authors.forEach((author) => {
     if (author.id === req.body.authorid) {
       return author.books.push(req.params.isbn);
     }
-  });
+  });*/
 
   return res.json({
-    books: database.books,
-    authors: database.authors,
-    message: "Author updated for the book",
+    books: updatedBook,
+    authors: updatedAuthor,
   });
 });
 

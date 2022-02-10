@@ -25,7 +25,7 @@ New book (using postman, database to be worked upon later) ✅ 💯
 
 PUT
 Update book details (title) (using forEach) ✅ 💯
-Update/Add author for a book ✅
+Update/Add author for a book ✅ 💯
 
 DELETE
 delete a book ✅
