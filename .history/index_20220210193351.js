@@ -537,6 +537,7 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
   return res.json({
     books: updatedBook,
     authors: updatedAuthor,
+    message: "Author was deleted for the book",
   });
 });
 

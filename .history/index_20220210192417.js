@@ -341,7 +341,7 @@ bookapi.put("/book/author/update/:isbn", async (req, res) => {
     },
     {
       $addToSet: {
-        authorid: parseInt(req.body.authorid),
+        authorid: Number(req.body.authorid),
       },
     },
     {
@@ -357,7 +357,7 @@ bookapi.put("/book/author/update/:isbn", async (req, res) => {
   //update the author database
 
   const updatedAuthor = await AuthorModel.findOneAndUpdate(
-    { id: parseInt(req.body.authorid) },
+    { id: Number(req.body.authorid) },
     {
       $addToSet: {
         books: req.params.isbn,
@@ -489,18 +489,10 @@ Parameters      isbn, authorid
 Method          DELETE
 */
 
-bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
+bookapi.delete("/book/author/delete/:isbn/:authorid", async(req, res) => {
   //update the book database
 
-  const updatedBook = await BookModel.findOneAndUpdate(
-    { ISBN: req.params.isbn },
-    {
-      $pull: {
-        authorid: parseInt(req.params.authorid),
-      },
-    },
-    { new: true }
-  );
+  const updatedBook = await BookModel.findOneAndUpdate({ISBN: req.params.isbn})
   /*database.books.forEach((book) => {
     if (book.ISBN === req.params.isbn) {
       const newAuthorList = book.authorid.filter(
@@ -512,18 +504,6 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
   });*/
 
   //update the author database
-
-  const updatedAuthor = await AuthorModel.findOneAndUpdate(
-    {
-      id: parseInt(req.params.authorid),
-    },
-    {
-      $pull: {
-        books: req.params.isbn,
-      },
-    },
-    { new: true }
-  );
   /*database.authors.forEach((author) => {
     if (author.id === parseInt(req.params.authorid)) {
       const newBooksList = author.books.filter(
@@ -535,8 +515,9 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
   });*/
 
   return res.json({
-    books: updatedBook,
-    authors: updatedAuthor,
+    books: database.books,
+    authors: database.authors,
+    message: "Author was deleted for the book",
   });
 });
 

@@ -341,7 +341,7 @@ bookapi.put("/book/author/update/:isbn", async (req, res) => {
     },
     {
       $addToSet: {
-        authorid: parseInt(req.body.authorid),
+        authorid: Number(req.body.authorid),
       },
     },
     {
@@ -357,7 +357,7 @@ bookapi.put("/book/author/update/:isbn", async (req, res) => {
   //update the author database
 
   const updatedAuthor = await AuthorModel.findOneAndUpdate(
-    { id: parseInt(req.body.authorid) },
+    { id: Number(req.body.authorid) },
     {
       $addToSet: {
         books: req.params.isbn,
@@ -496,7 +496,7 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
     { ISBN: req.params.isbn },
     {
       $pull: {
-        authorid: parseInt(req.params.authorid),
+        authorid: req.params.authorid,
       },
     },
     { new: true }
@@ -513,17 +513,7 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
 
   //update the author database
 
-  const updatedAuthor = await AuthorModel.findOneAndUpdate(
-    {
-      id: parseInt(req.params.authorid),
-    },
-    {
-      $pull: {
-        books: req.params.isbn,
-      },
-    },
-    { new: true }
-  );
+  const updatedAuthor = await AuthorModel.finoneand
   /*database.authors.forEach((author) => {
     if (author.id === parseInt(req.params.authorid)) {
       const newBooksList = author.books.filter(
@@ -535,8 +525,9 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
   });*/
 
   return res.json({
-    books: updatedBook,
-    authors: updatedAuthor,
+    books: database.books,
+    authors: database.authors,
+    message: "Author was deleted for the book",
   });
 });
 

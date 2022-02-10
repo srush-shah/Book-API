@@ -515,14 +515,14 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
 
   const updatedAuthor = await AuthorModel.findOneAndUpdate(
     {
-      id: parseInt(req.params.authorid),
+      id: parseInt(req.params.authorid_,
     },
     {
       $pull: {
         books: req.params.isbn,
       },
     },
-    { new: true }
+    { new: true  }
   );
   /*database.authors.forEach((author) => {
     if (author.id === parseInt(req.params.authorid)) {
@@ -535,8 +535,9 @@ bookapi.delete("/book/author/delete/:isbn/:authorid", async (req, res) => {
   });*/
 
   return res.json({
-    books: updatedBook,
-    authors: updatedAuthor,
+    books: database.books,
+    authors: database.authors,
+    message: "Author was deleted for the book",
   });
 });
 
