@@ -200,9 +200,9 @@ Parameters      NONE
 Method          GET
 */
 
-bookapi.get("/publications", async (req, res) => {
-  const getAllPublications = await PublicationModel.find();
-  return res.json({ publications: getAllPublications });
+bookapi.get("/publications", (req, res) => {
+  const 
+  return res.json({ publications: database.publications });
 });
 
 /*
@@ -287,11 +287,12 @@ Parameters      NONE
 Method          POST
 */
 
-bookapi.post("/publication/new", async (req, res) => {
+bookapi.post("/publication/new", (req, res) => {
   //We will use request body here instead of request parameter
   const { newPublication } = req.body;
-  await PublicationModel.create(newPublication);
+  database.publications.push(newPublication);
   return res.json({
+    publications: database.publications,
     message: "The publication was added",
   });
 });
@@ -387,7 +388,7 @@ Method          PUT
 */
 
 bookapi.put("/author/update/:name", (req, res) => {
-  //forEach directly modifies the array so we will use it for now
+  //froEach directly modifies the array so we will use it for now
   database.authors.forEach((author) => {
     if (author.name === req.params.name) {
       author.name = req.body.name;

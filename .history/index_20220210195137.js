@@ -387,7 +387,7 @@ Method          PUT
 */
 
 bookapi.put("/author/update/:name", (req, res) => {
-  //forEach directly modifies the array so we will use it for now
+  //froEach directly modifies the array so we will use it for now
   database.authors.forEach((author) => {
     if (author.name === req.params.name) {
       author.name = req.body.name;
