@@ -1,0 +1,21 @@
+MongoDB operators are powerful.
+
+-> Update Operators:-
+1. $inc -> increment
+2. $min -> minimum
+3. $max -> maximum
+4. $set -> sets a data to an object property => E.g. book.title = "Math" is set using $set operator.
+5. $unset -> removes an property from an object => E.g title property from book object is removed
+ 
+There is no decrement operator in MongoDB hence negative numbers are used with increment operator.
+
+-> Arrays:-
+1. $push -> to push data at the end of the array
+2. $pop -> to delete the data from the end of the array
+3. $pull -> pull and remove an element from  the array => E.g. name = ['pavan','vickie']
+                                                     $pull = {
+                                                         name: 'pavan';
+                                                     }
+                                                     pull is similar to filter.
+
+4. $addToSet -> Adds to array only if the value does not exist already. Clever way of pushing data.

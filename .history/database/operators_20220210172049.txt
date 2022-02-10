@@ -1,0 +1,10 @@
+MongoDB operators are powerful.
+
+-> Update Operators:-
+1. $inc -> increment
+2. $min -> minimum
+3. $max -> maximum
+4. $set -> sets a data
+5. $unset -> removes an property from an object
+ 
+There is no decrement operator in MongoDB 
