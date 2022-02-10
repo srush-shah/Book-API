@@ -427,7 +427,8 @@ bookapi.put("/publication/update/:name", async (req, res) => {
   });*/
 
   return res.json({
-    publications: updatedPublication,
+    publications: database.publications,
+    message: "Updated name of the publication",
   });
 });
 
@@ -439,37 +440,24 @@ Parameters      pubid
 Method          PUT
 */
 
-bookapi.put("/publication/book/update/:pubid", async (req, res) => {
+bookapi.put("/publication/book/update/:pubid", (req, res) => {
   //update the publication database
-  const updatedPublication = await PublicationModel.findOneAndUpdate(
-    { pubid: parseInt(req.params.pubid) },
-    {
-      $addToSet: {
-        books: req.body.isbn,
-      },
-    },
-    { new: true }
-  );
-  /*database.publications.forEach((pub) => {
+  database.publications.forEach((pub) => {
     if (pub.id === parseInt(req.params.pubid)) {
       return pub.books.push(req.body.isbn);
     }
-  });*/
+  });
   //update the book database
-  const updatedBook = await BookModel.findOneAndUpdate(
-    { ISBN: req.body.isbn },
-    { publication: parseInt(req.params.pubid) },
-    { new: true }
-  );
-  /*database.books.forEach((book) => {
+  database.books.forEach((book) => {
     if (book.ISBN === req.body.isbn) {
       return (book.publication = parseInt(req.params.pubid));
     }
-  });*/
+  });
 
   return res.json({
-    books: updatedBook,
-    publications: updatedPublication,
+    books: database.books,
+    publications: database.publications,
+    message: "Book updated for the publication",
   });
 });
 

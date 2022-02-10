@@ -470,6 +470,7 @@ bookapi.put("/publication/book/update/:pubid", async (req, res) => {
   return res.json({
     books: updatedBook,
     publications: updatedPublication,
+    message: "Book updated for the publication",
   });
 });
 

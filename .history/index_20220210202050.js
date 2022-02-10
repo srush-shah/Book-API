@@ -456,11 +456,7 @@ bookapi.put("/publication/book/update/:pubid", async (req, res) => {
     }
   });*/
   //update the book database
-  const updatedBook = await BookModel.findOneAndUpdate(
-    { ISBN: req.body.isbn },
-    { publication: parseInt(req.params.pubid) },
-    { new: true }
-  );
+  const updatedBook = await BookModel.findOneAndUpdate({ISBN: req.body.isbn},{publication: parseInt(req.params.pubid)},)
   /*database.books.forEach((book) => {
     if (book.ISBN === req.body.isbn) {
       return (book.publication = parseInt(req.params.pubid));
@@ -468,8 +464,9 @@ bookapi.put("/publication/book/update/:pubid", async (req, res) => {
   });*/
 
   return res.json({
-    books: updatedBook,
-    publications: updatedPublication,
+    books: database.books,
+    publications: database.publications,
+    message: "Book updated for the publication",
   });
 });
 
