@@ -471,7 +471,7 @@ bookapi.delete("/book/delete/:isbn", async (req, res) => {
         books: req.params.isbn,
       },
     }
-  );*/ // Update author database to remove the book ISBN from the author object
+  );*/ // Update author database to remove the book ISBN from the author id.
   /*(const updatedBookDatabase = database.books.filter(
     (book) => book.ISBN !== req.params.isbn
   );

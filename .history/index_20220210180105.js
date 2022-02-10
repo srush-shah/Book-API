@@ -13,7 +13,6 @@ const BookModel = require("./database/book");
 const AuthorModel = require("./database/author");
 const PublicationModel = require("./database/publication");
 const { get } = require("express/lib/request");
-const { update } = require("./database/book");
 
 //Initializing express
 const bookapi = express();
@@ -332,49 +331,24 @@ Parameters      isbn
 Method          PUT
 */
 
-bookapi.put("/book/author/update/:isbn", async (req, res) => {
+bookapi.put("/book/author/update/:isbn", (req, res) => {
   //update the book database
-
-  const updatedBook = await BookModel.findOneAndUpdate(
-    {
-      ISBN: req.params.isbn,
-    },
-    {
-      $addToSet: {
-        authorid: Number(req.body.authorid),
-      },
-    },
-    {
-      new: true,
-    }
-  );
-  /*database.books.forEach((book) => {
+  /database.books.forEach((book) => {
     if (book.ISBN === req.params.isbn) {
       return book.authorid.push(req.body.authorid);
     }
-  });*/
-
+  });
   //update the author database
-
-  const updatedAuthor = await AuthorModel.findOneAndUpdate(
-    { id: Number(req.body.authorid) },
-    {
-      $addToSet: {
-        books: req.params.isbn,
-      },
-    },
-    { new: true }
-  );
-
-  /*database.authors.forEach((author) => {
+  database.authors.forEach((author) => {
     if (author.id === req.body.authorid) {
       return author.books.push(req.params.isbn);
     }
-  });*/
+  });
 
   return res.json({
-    books: updatedBook,
-    authors: updatedAuthor,
+    books: database.books,
+    authors: database.authors,
+    message: "Author updated for the book",
   });
 });
 
@@ -459,26 +433,14 @@ Parameters      isbn
 Method          DELETE
 */
 
-bookapi.delete("/book/delete/:isbn", async (req, res) => {
-  const deletedBook = await BookModel.findOneAndDelete({
-    ISBN: req.params.isbn,
-  });
-
-  /*const updatedAuthor = await AuthorModel.updateMany(
-    { id: { $in: deletedBook.authorid } },
-    {
-      $pull: {
-        books: req.params.isbn,
-      },
-    }
-  );*/ // Update author database to remove the book ISBN from the author object
-  /*(const updatedBookDatabase = database.books.filter(
+bookapi.delete("/book/delete/:isbn", (req, res) => {
+  const updatedBookDatabase = database.books.filter(
     (book) => book.ISBN !== req.params.isbn
   );
 
-  database.books = updatedBookDatabase;*/
+  database.books = updatedBookDatabase;
 
-  return res.json({ books: deletedBook, authors: updatedAuthor });
+  return res.json({ books: database.books });
 });
 
 /*

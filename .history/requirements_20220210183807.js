@@ -28,7 +28,7 @@ Update book details (title) (using forEach) ✅ 💯
 Update/Add author for a book ✅ 💯
 
 DELETE
-delete a book ✅ 💯
+delete a book ✅ 
 delete an author for a book ✅
 */
 

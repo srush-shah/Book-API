@@ -464,21 +464,14 @@ bookapi.delete("/book/delete/:isbn", async (req, res) => {
     ISBN: req.params.isbn,
   });
 
-  /*const updatedAuthor = await AuthorModel.updateMany(
-    { id: { $in: deletedBook.authorid } },
-    {
-      $pull: {
-        books: req.params.isbn,
-      },
-    }
-  );*/ // Update author database to remove the book ISBN from the author object
+  const updatedAuthor = await AuthorModel.findA
   /*(const updatedBookDatabase = database.books.filter(
     (book) => book.ISBN !== req.params.isbn
   );
 
   database.books = updatedBookDatabase;*/
 
-  return res.json({ books: deletedBook, authors: updatedAuthor });
+  return res.json({ books: deletedBook });
 });
 
 /*

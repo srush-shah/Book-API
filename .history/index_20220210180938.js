@@ -335,13 +335,13 @@ Method          PUT
 bookapi.put("/book/author/update/:isbn", async (req, res) => {
   //update the book database
 
-  const updatedBook = await BookModel.findOneAndUpdate(
+  const updateBook = await BookModel.findOneAndUpdate(
     {
       ISBN: req.params.isbn,
     },
     {
-      $addToSet: {
-        authorid: Number(req.body.authorid),
+      $push: {
+        authors: Number(req.body.authorid),
       },
     },
     {
@@ -359,7 +359,7 @@ bookapi.put("/book/author/update/:isbn", async (req, res) => {
   const updatedAuthor = await AuthorModel.findOneAndUpdate(
     { id: Number(req.body.authorid) },
     {
-      $addToSet: {
+      $push: {
         books: req.params.isbn,
       },
     },
@@ -374,7 +374,7 @@ bookapi.put("/book/author/update/:isbn", async (req, res) => {
 
   return res.json({
     books: updatedBook,
-    authors: updatedAuthor,
+    authors: database.authors,
   });
 });
 
@@ -459,26 +459,14 @@ Parameters      isbn
 Method          DELETE
 */
 
-bookapi.delete("/book/delete/:isbn", async (req, res) => {
-  const deletedBook = await BookModel.findOneAndDelete({
-    ISBN: req.params.isbn,
-  });
-
-  /*const updatedAuthor = await AuthorModel.updateMany(
-    { id: { $in: deletedBook.authorid } },
-    {
-      $pull: {
-        books: req.params.isbn,
-      },
-    }
-  );*/ // Update author database to remove the book ISBN from the author object
-  /*(const updatedBookDatabase = database.books.filter(
+bookapi.delete("/book/delete/:isbn", (req, res) => {
+  const updatedBookDatabase = database.books.filter(
     (book) => book.ISBN !== req.params.isbn
   );
 
-  database.books = updatedBookDatabase;*/
+  database.books = updatedBookDatabase;
 
-  return res.json({ books: deletedBook, authors: updatedAuthor });
+  return res.json({ books: database.books });
 });
 
 /*
