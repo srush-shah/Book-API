@@ -48,7 +48,7 @@ PUT
 Update author details [Task] ✅ 💯
 
 DELETE
-delete an author [Task] ✅ 💯
+delete an author [Task] ✅ 🤞
 */
 
 //Publication
@@ -56,9 +56,9 @@ delete an author [Task] ✅ 💯
 We need an API
 
 GET
-to get all publications ✅ 💯
-to get a specific publication [Task] ✅ 💯
-to get a list of publications  based on books [Task] ✅ 💯
+to get all publications ✅ 🤞
+to get a specific publication [Task] ✅ 🤞
+to get a list of publications  based on books [Task] ✅ 🤞
 
 POST
 New publication [TASK] (using postman, database to be worked upon later) ✅ 💯
@@ -68,8 +68,8 @@ Update publication details [Task] ✅ 💯
 Update/Add book for a publication ✅ 💯
 
 DELETE
-delete a book from publication ✅ 💯
-delete a publication [Task] ✅ 💯
+delete a book from publication ✅ 🤞
+delete a publication [Task] ✅ 🤞 
 */
 
 //How does the server serve the request

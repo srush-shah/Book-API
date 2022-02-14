@@ -618,21 +618,9 @@ Parameters      isbn, pubid
 Method          DELETE
 */
 
-bookapi.delete("/publication/book/delete/:isbn/:pubid", async (req, res) => {
+bookapi.delete("/publication/book/delete/:isbn/:pubid", (req, res) => {
   //update publication database
-
-  const updatedPublication = await PublicationModel.findOneAndUpdate(
-    {
-      id: req.params.pubid,
-    },
-    {
-      $pull: {
-        books: req.params.isbn,
-      },
-    },
-    { new: true }
-  );
-  /*database.publications.forEach((publication) => {
+  database.publications.forEach((publication) => {
     if (publication.id === parseInt(req.params.pubid)) {
       const newBooksList = publication.books.filter(
         (book) => book !== req.params.isbn
@@ -640,31 +628,20 @@ bookapi.delete("/publication/book/delete/:isbn/:pubid", async (req, res) => {
       publication.books = newBooksList;
       return;
     }
-  });*/
+  });
 
   //update book database
-
-  const updatedBook = await BookModel.findOneAndUpdate(
-    {
-      ISBN: req.params.isbn,
-    },
-    {
-      $set: {
-        publication: None,
-      },
-    },
-    { new: true }
-  );
-  /*database.books.forEach((book) => {
+  database.books.forEach((book) => {
     if (book.ISBN === req.params.isbn) {
       book.publication = "None";
     }
     return;
-  });*/
+  });
 
   return res.json({
-    books: updatedBook,
-    publications: updatedPublication,
+    books: database.books,
+    publications: database.publications,
+    message: "The book was removed from the publication",
   });
 });
 

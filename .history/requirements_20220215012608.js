@@ -68,8 +68,8 @@ Update publication details [Task] ✅ 💯
 Update/Add book for a publication ✅ 💯
 
 DELETE
-delete a book from publication ✅ 💯
-delete a publication [Task] ✅ 💯
+delete a book from publication ✅ 
+delete a publication [Task] ✅ 🤞 
 */
 
 //How does the server serve the request

@@ -665,6 +665,7 @@ bookapi.delete("/publication/book/delete/:isbn/:pubid", async (req, res) => {
   return res.json({
     books: updatedBook,
     publications: updatedPublication,
+    message: "The book was removed from the publication",
   });
 });
 

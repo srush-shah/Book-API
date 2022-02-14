@@ -68,7 +68,7 @@ Update publication details [Task] ✅ 💯
 Update/Add book for a publication ✅ 💯
 
 DELETE
-delete a book from publication ✅ 💯
+delete a book from publication ✅ 
 delete a publication [Task] ✅ 💯
 */
 
