@@ -650,7 +650,7 @@ bookapi.delete("/publication/book/delete/:isbn/:pubid", async (req, res) => {
     },
     {
       $set: {
-        publication: null,
+        publication: None,
       },
     },
     { new: true }
