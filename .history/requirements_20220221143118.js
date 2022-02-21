@@ -73,4 +73,4 @@ delete a publication [Task] ✅ 💯
 */
 
 // Add mongoose validation to all database models [Task] ✅
-// Exception handling with try-catch in all APIs [Task]
+// Exception handling with try-catch in all APIs [T]
