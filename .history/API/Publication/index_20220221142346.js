@@ -76,15 +76,11 @@ Router.get("/isbn/:isbn", async (req, res) => {
 
 Router.post("/new", async (req, res) => {
   try {
-    //We will use request body here instead of request parameter
-    const { newPublication } = req.body;
-    await PublicationModel.create(newPublication);
-    return res.json({
-      message: "The publication was added",
-    });
+    
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
+  
 });
 
 /*

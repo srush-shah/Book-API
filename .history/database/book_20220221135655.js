@@ -4,16 +4,9 @@ const mongoose = require("mongoose");
 const BookSchema = mongoose.Schema({
   ISBN: {
     type: String,
-    required: true,
-    minLength: 8,
-    maxLength: 10,
-  }, // mongoose validation of required
-  title: {
-    type: String,
-    required: true,
-    minLength: 8,
-    maxLength: 10,
+    requ
   },
+  title: String,
   authorid: [Number],
   language: String,
   pubDate: String,

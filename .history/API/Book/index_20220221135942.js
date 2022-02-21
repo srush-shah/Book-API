@@ -114,15 +114,12 @@ Method          POST
 */
 
 Router.post("/new", async (req, res) => {
-  try {
-    //We will use request body here instead of request parameter
-    const { newBook } = req.body;
-    await BookModel.create(newBook);
-    //database.books.push(newBook);
-    return res.json({ message: "The book was added" });
-  } catch (error) {
-    return res.json({ error: error.message });
-  } //Handling errors which might be caused by mongoose validation
+  tr
+  //We will use request body here instead of request parameter
+  const { newBook } = req.body;
+  await BookModel.create(newBook);
+  //database.books.push(newBook);
+  return res.json({ message: "The book was added" });
 });
 
 /*

@@ -76,13 +76,14 @@ Method          POST
 
 Router.post("/new", async (req, res) => {
   try {
-    //We will use request body here instead of request parameter
-    const { newAuthor } = req.body;
-    await AuthorModel.create(newAuthor);
-    return res.json({ message: "The author was added" });
+    
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
+  //We will use request body here instead of request parameter
+  const { newAuthor } = req.body;
+  await AuthorModel.create(newAuthor);
+  return res.json({ message: "The author was added" });
 });
 
 /*

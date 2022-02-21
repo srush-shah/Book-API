@@ -83,7 +83,7 @@ Router.post("/new", async (req, res) => {
       message: "The publication was added",
     });
   } catch (error) {
-    return res.json({ error: error.message });
+    return res.json
   }
 });
 

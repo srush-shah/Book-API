@@ -8,12 +8,12 @@ const BookSchema = mongoose.Schema({
     minLength: 8,
     maxLength: 10,
   }, // mongoose validation of required
-  title: {
-    type: String,
-    required: true,
-    minLength: 8,
-    maxLength: 10,
-  },
+  title: 
+  type: String,
+  required: true,
+  minLength: 8,
+  maxLength: 10,
+},
   authorid: [Number],
   language: String,
   pubDate: String,

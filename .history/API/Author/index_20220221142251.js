@@ -81,7 +81,7 @@ Router.post("/new", async (req, res) => {
     await AuthorModel.create(newAuthor);
     return res.json({ message: "The author was added" });
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
 });
 

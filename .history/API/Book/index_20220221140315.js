@@ -121,7 +121,7 @@ Router.post("/new", async (req, res) => {
     //database.books.push(newBook);
     return res.json({ message: "The book was added" });
   } catch (error) {
-    return res.json({ error: error.message });
+    return res.json(:)
   } //Handling errors which might be caused by mongoose validation
 });
 

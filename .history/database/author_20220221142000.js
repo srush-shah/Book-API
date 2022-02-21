@@ -9,6 +9,8 @@ const AuthorSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
+    minLength: 8,
+    maxLength: 10,
   },
   books: [String],
 });

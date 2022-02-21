@@ -80,9 +80,7 @@ Router.post("/new", async (req, res) => {
     const { newAuthor } = req.body;
     await AuthorModel.create(newAuthor);
     return res.json({ message: "The author was added" });
-  } catch (error) {
-    return res.json({ error: error.message });
-  }
+  } catch (error) {}
 });
 
 /*
