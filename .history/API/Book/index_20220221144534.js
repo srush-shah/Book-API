@@ -241,28 +241,29 @@ Method          DELETE
 
 Router.delete("/delete/:isbn", async (req, res) => {
   try {
-    const deletedBook = await BookModel.findOneAndDelete({
-      ISBN: req.params.isbn,
-    });
-
-    /*const updatedAuthor = await AuthorModel.updateMany(
-        { id: { $in: deletedBook.authorid } },
-        {
-          $pull: {
-            books: req.params.isbn,
-          },
-        }
-      );*/ // Update author database to remove the book ISBN from the author object
-    /*(const updatedBookDatabase = database.books.filter(
-        (book) => book.ISBN !== req.params.isbn
-      );
     
-      database.books = updatedBookDatabase;*/
-
-    return res.json({ books: deletedBook });
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
+  const deletedBook = await BookModel.findOneAndDelete({
+    ISBN: req.params.isbn,
+  });
+
+  /*const updatedAuthor = await AuthorModel.updateMany(
+      { id: { $in: deletedBook.authorid } },
+      {
+        $pull: {
+          books: req.params.isbn,
+        },
+      }
+    );*/ // Update author database to remove the book ISBN from the author object
+  /*(const updatedBookDatabase = database.books.filter(
+      (book) => book.ISBN !== req.params.isbn
+    );
+  
+    database.books = updatedBookDatabase;*/
+
+  return res.json({ books: deletedBook });
 });
 
 /*
@@ -274,19 +275,18 @@ Router.delete("/delete/:isbn", async (req, res) => {
   */
 
 Router.delete("/author/delete/:isbn/:authorid", async (req, res) => {
-  try {
-    //update the book database
+  //update the book database
 
-    const updatedBook = await BookModel.findOneAndUpdate(
-      { ISBN: req.params.isbn },
-      {
-        $pull: {
-          authorid: parseInt(req.params.authorid),
-        },
+  const updatedBook = await BookModel.findOneAndUpdate(
+    { ISBN: req.params.isbn },
+    {
+      $pull: {
+        authorid: parseInt(req.params.authorid),
       },
-      { new: true }
-    );
-    /*database.books.forEach((book) => {
+    },
+    { new: true }
+  );
+  /*database.books.forEach((book) => {
       if (book.ISBN === req.params.isbn) {
         const newAuthorList = book.authorid.filter(
           (author) => author !== parseInt(req.params.authorid)
@@ -296,20 +296,20 @@ Router.delete("/author/delete/:isbn/:authorid", async (req, res) => {
       }
     });*/
 
-    //update the author database
+  //update the author database
 
-    const updatedAuthor = await AuthorModel.findOneAndUpdate(
-      {
-        id: parseInt(req.params.authorid),
+  const updatedAuthor = await AuthorModel.findOneAndUpdate(
+    {
+      id: parseInt(req.params.authorid),
+    },
+    {
+      $pull: {
+        books: req.params.isbn,
       },
-      {
-        $pull: {
-          books: req.params.isbn,
-        },
-      },
-      { new: true }
-    );
-    /*database.authors.forEach((author) => {
+    },
+    { new: true }
+  );
+  /*database.authors.forEach((author) => {
       if (author.id === parseInt(req.params.authorid)) {
         const newBooksList = author.books.filter(
           (book) => book !== req.params.isbn
@@ -319,13 +319,10 @@ Router.delete("/author/delete/:isbn/:authorid", async (req, res) => {
       }
     });*/
 
-    return res.json({
-      books: updatedBook,
-      authors: updatedAuthor,
-    });
-  } catch (error) {
-    return res.json({ error: error.message });
-  }
+  return res.json({
+    books: updatedBook,
+    authors: updatedAuthor,
+  });
 });
 
 module.exports = Router;

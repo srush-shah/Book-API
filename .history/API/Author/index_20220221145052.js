@@ -109,24 +109,11 @@ Method          PUT
 
 Router.put("/update/:name", async (req, res) => {
   try {
-    const updatedAuthor = await AuthorModel.findOneAndUpdate(
-      { name: req.params.name },
-      { name: req.body.name },
-      { new: true }
-    );
-    //forEach directly modifies the array so we will use it for now
-    /*database.authors.forEach((author) => {
-        if (author.name === req.params.name) {
-          author.name = req.body.name;
-        }
-      });*/
-
-    return res.json({
-      authors: updatedAuthor,
-    });
+    
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
+  
 });
 
 /*
@@ -138,20 +125,16 @@ Method          DELETE
 */
 
 Router.delete("/delete/:name", async (req, res) => {
-  try {
-    const deletedAuthor = await AuthorModel.findOneAndDelete({
-      name: req.params.name,
-    });
-    /*const updatedAuthorDatabase = database.authors.filter(
-        (author) => author.name !== req.params.name
-      );
-    
-      database.authors = updatedAuthorDatabase;*/
+  const deletedAuthor = await AuthorModel.findOneAndDelete({
+    name: req.params.name,
+  });
+  /*const updatedAuthorDatabase = database.authors.filter(
+      (author) => author.name !== req.params.name
+    );
+  
+    database.authors = updatedAuthorDatabase;*/
 
-    return res.json({ authors: deletedAuthor });
-  } catch (error) {
-    return res.json({ error: error.message });
-  }
+  return res.json({ authors: deletedAuthor });
 });
 
 module.exports = Router;

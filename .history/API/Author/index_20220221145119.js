@@ -147,11 +147,12 @@ Router.delete("/delete/:name", async (req, res) => {
       );
     
       database.authors = updatedAuthorDatabase;*/
-
+  
     return res.json({ authors: deletedAuthor });
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
+  
 });
 
 module.exports = Router;

@@ -139,19 +139,20 @@ Method          DELETE
 
 Router.delete("/delete/:name", async (req, res) => {
   try {
-    const deletedAuthor = await AuthorModel.findOneAndDelete({
-      name: req.params.name,
-    });
-    /*const updatedAuthorDatabase = database.authors.filter(
-        (author) => author.name !== req.params.name
-      );
     
-      database.authors = updatedAuthorDatabase;*/
-
-    return res.json({ authors: deletedAuthor });
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
+  const deletedAuthor = await AuthorModel.findOneAndDelete({
+    name: req.params.name,
+  });
+  /*const updatedAuthorDatabase = database.authors.filter(
+      (author) => author.name !== req.params.name
+    );
+  
+    database.authors = updatedAuthorDatabase;*/
+
+  return res.json({ authors: deletedAuthor });
 });
 
 module.exports = Router;

@@ -210,56 +210,11 @@ Router.delete("/delete/:name", async (req, res) => {
 
 Router.delete("/book/delete/:isbn/:pubid", async (req, res) => {
   try {
-    //update publication database
-
-    const updatedPublication = await PublicationModel.findOneAndUpdate(
-      {
-        id: req.params.pubid,
-      },
-      {
-        $pull: {
-          books: req.params.isbn,
-        },
-      },
-      { new: true }
-    );
-    /*database.publications.forEach((publication) => {
-      if (publication.id === parseInt(req.params.pubid)) {
-        const newBooksList = publication.books.filter(
-          (book) => book !== req.params.isbn
-        );
-        publication.books = newBooksList;
-        return;
-      }
-    });*/
-
-    //update book database
-
-    const updatedBook = await BookModel.findOneAndUpdate(
-      {
-        ISBN: req.params.isbn,
-      },
-      {
-        $set: {
-          publication: null,
-        },
-      },
-      { new: true }
-    );
-    /*database.books.forEach((book) => {
-      if (book.ISBN === req.params.isbn) {
-        book.publication = "None";
-      }
-      return;
-    });*/
-
-    return res.json({
-      books: updatedBook,
-      publications: updatedPublication,
-    });
+    
   } catch (error) {
-    return res.json({ error: error.message });
+    
   }
+  
 });
 
 module.exports = Router;
