@@ -15,8 +15,6 @@ const PublicationModel = require("./database/publication");
 
 //Microservices Routes
 const Books = require("./API/Book");
-const Authors = require("./API/Author");
-const Publications = require("./API/Publication");
 //Initializing express
 const bookapi = express();
 //Configurations
@@ -32,8 +30,8 @@ mongoose
 
 //Initializing Microservices
 bookapi.use("/book", Books);
-bookapi.use("/author", Authors);
-bookapi.use("/publication", Publications);
+bookapi.use('/author', )
+
 
 bookapi.listen(3000, () => console.log("Server running!"));
 

@@ -33,7 +33,7 @@ mongoose
 //Initializing Microservices
 bookapi.use("/book", Books);
 bookapi.use("/author", Authors);
-bookapi.use("/publication", Publications);
+bookapi.use('/publication')
 
 bookapi.listen(3000, () => console.log("Server running!"));
 

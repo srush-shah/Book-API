@@ -1,0 +1,109 @@
+//Initializing Express Router
+const Router = require("express").Router();
+
+//Database Model
+const AuthorModel = require("../../database/author");
+
+/*
+Route           /authors
+Description     get all authors
+Access          PUBLIC
+Parameters      NONE
+Method          GET
+*/
+
+bookapi.get("/authors", async (req, res) => {
+  const getAllAuthors = await AuthorModel.find();
+  return res.json(getAllAuthors);
+});
+
+/*
+  Route           /authors/author
+  Description     get a specific author by name
+  Access          PUBLIC
+  Parameters      author
+  Method          GET
+  */
+
+bookapi.get("/authors/author/:author", async (req, res) => {
+  const getSpecificAuthor = await AuthorModel.findOne({
+    name: req.params.author,
+  });
+
+  /*const getSpecificAuthor = database.authors.filter(
+      (author) => author.name === req.params.author
+    );*/
+
+  if (!getSpecificAuthor) {
+    return res.json({
+      error: `No author found with the name ${req.params.author}`,
+    });
+  }
+  return res.json(getSpecificAuthor);
+});
+
+/*
+  Route           /authors/isbn
+  Description     get a list of authors based on a book's ISBN
+  Access          PUBLIC
+  Parameters      isbn
+  Method          GET
+  */
+
+bookapi.get("/authors/isbn/:isbn", async (req, res) => {
+  const getSpecificAuthors = await AuthorModel.find({ books: req.params.isbn });
+
+  /*const getSpecificAuthors = database.authors.filter((author) =>
+      author.books.includes(req.params.isbn)
+    );*/
+
+  if (!getSpecificAuthors) {
+    return res.json({
+      error: `No author found for the book ${req.params.isbn}`,
+    });
+  }
+
+  return res.json(getSpecificAuthors);
+});
+
+/*
+Route           /author/new
+Description     add new author
+Access          PUBLIC
+Parameters      NONE
+Method          POST
+*/
+
+bookapi.post("/author/new", async (req, res) => {
+  //We will use request body here instead of request parameter
+  const { newAuthor } = req.body;
+  await AuthorModel.create(newAuthor);
+  return res.json({ message: "The author was added" });
+});
+
+/*
+Route           /author/update
+Description     update author name
+Access          PUBLIC
+Parameters      name
+Method          PUT
+*/
+
+bookapi.put("/author/update/:name", async (req, res) => {
+  const updatedAuthor = await AuthorModel.findOneAndUpdate(
+    { name: req.params.name },
+    { name: req.body.name },
+    { new: true }
+  );
+  //forEach directly modifies the array so we will use it for now
+  /*database.authors.forEach((author) => {
+      if (author.name === req.params.name) {
+        author.name = req.body.name;
+      }
+    });*/
+
+  return res.json({
+    authors: updatedAuthor,
+  });
+});
+
